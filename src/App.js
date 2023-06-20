@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import "./App.css";
 import AddContact from "./components/AddContact";
 import ContactList from "./components/ContactList";
 import EditContact from "./components/EditContact";
