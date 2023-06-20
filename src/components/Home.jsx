@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
+import { Outlet, Route, Switch } from "react-router-dom";
 import "../App.css";
+import AddContact from "./AddContact";
 import ContactList from "./ContactList";
 import Header from "./Header";
 
@@ -11,18 +13,7 @@ export default function Home() {
     setContacts(JSON.parse(localStorage.getItem("contacts") || "[]"));
   }, [flag]);
 
-  const saveContact = (contact) => {
-    const isExist = contacts.filter((item) => {
-      return item.phone == contact.phone;
-    });
-    if (isExist.length === 0) {
-      contacts.push(contact);
-      localStorage.setItem("contacts", JSON.stringify(contacts));
-      setFlag(!flag);
-    } else {
-      alert("Phone no. already exist");
-    }
-  };
+  const saveContact = (contact) => {};
 
   const deleteContact = (id) => {
     const index = contacts.findIndex((obj) => obj.id === id);
@@ -36,9 +27,8 @@ export default function Home() {
   return (
     <div className="App">
       <Header></Header>
-      {/* <Outlet></Outlet> */}
+      <Outlet></Outlet>
 
-      {/* <AddContact addContactHandler={saveContact}></AddContact> */}
       <ContactList
         contacts={contacts}
         setDeleteContactId={deleteContact}

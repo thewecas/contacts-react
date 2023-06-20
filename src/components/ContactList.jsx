@@ -17,6 +17,7 @@ export default function ContactList(props) {
               <ContactCard
                 contact={contact}
                 setDeleteId={getDeleteId}
+                key={contact.id}
               ></ContactCard>
             );
           })}

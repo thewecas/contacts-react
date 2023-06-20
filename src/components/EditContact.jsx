@@ -1,20 +1,39 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
 export default function EditContact(props) {
-  const { id, name, phone, email } = props.contact;
+  const { id } = useParams();
+  const navigate = useNavigate();
+  // const [contacts, setContacts] = useState([]);
+  const contacts = props.contacts;
   const [contact, setContact] = useState({
-    name: name,
-    phone: phone,
-    email: email,
+    name: "",
+    phone: "",
+    email: "",
   });
-  const saveContact = (e) => {
+  useEffect(() => {
+    setContact(contacts.filter((item) => item.id == id)[0]);
+  }, []);
+  const updateContact = (e) => {
     e.preventDefault();
+    const index = contacts.findIndex((obj) => obj.id == id);
+    console.log("index", index);
+    contacts[index] = { id: id, ...contact };
+    localStorage.setItem("contacts", JSON.stringify(contacts));
+
+    setContact({
+      name: "",
+      phone: "",
+      email: "",
+    });
+    props.setFlag();
+    navigate("/");
   };
 
   return (
     <div className="newContact">
       <h2>New Contact</h2>
-      <form onSubmit={(e) => saveContact(e)}>
+      <form onSubmit={(e) => updateContact(e)}>
         <div className="field">
           <label htmlFor="name">Name</label>
           <input
@@ -22,7 +41,7 @@ export default function EditContact(props) {
             name="name"
             id=""
             placeholder="Name"
-            value={contact.name}
+            value={contact?.name}
             onChange={(e) => setContact({ ...contact, name: e.target.value })}
           />
         </div>
@@ -33,7 +52,7 @@ export default function EditContact(props) {
             name="phone"
             id=""
             placeholder="Phone no."
-            value={contact.phone}
+            value={contact?.phone}
             onChange={(e) => setContact({ ...contact, phone: e.target.value })}
           />
         </div>
@@ -44,7 +63,7 @@ export default function EditContact(props) {
             name="email"
             id=""
             placeholder="Email id"
-            value={contact.email}
+            value={contact?.email}
             onChange={(e) => setContact({ ...contact, email: e.target.value })}
           />
         </div>

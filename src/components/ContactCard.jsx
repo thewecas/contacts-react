@@ -1,8 +1,9 @@
 // import img from "../img/user.png";
+import { Link } from "react-router-dom";
 
 export default function ContactCard(props) {
   const { id, name, phone, email } = props.contact;
-
+  // const navigate = useNavigate();
   const sendDeleteId = () => {
     props.setDeleteId(id);
   };
@@ -14,7 +15,7 @@ export default function ContactCard(props) {
       <p>{phone}</p>
       <p>{email}</p>
       <div className="btns">
-        <button>edit</button>
+        <Link to={"/edit/" + id}>edit</Link>
         <button onClick={sendDeleteId}>delete</button>
       </div>
     </div>
