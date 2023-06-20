@@ -1,13 +1,258 @@
-body {
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+:root {
+  font-size: 16px;
+  --text: #ebebeb;
+  --bg: #f7fdfb;
+  --prime-btn: #2d2692;
+  --sec-btn: #b4bcc5;
+  --accent: #2f2c23;
+
+}
+
+body {
+  max-width: 920px;
+  background-color: var(--bg);
+  margin-inline: auto;
+}
+
+Link.btn,
+a.btn,
+button.btn {
+  text-decoration: none;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: capitalize;
+  margin: 0.5rem;
+  color: var(--text);
+  min-width: 6rem;
+  min-height: 3rem;
+  width: fit-content;
+  font-size: 1rem;
+  border-radius: 0.5em;
+  background-color: var(--prime-btn);
+  border: transparent;
+  outline: transparent;
+}
+
+Link.btn:hover,
+a.btn:hover,
+button.btn:hover {
+  opacity: 0.95;
+  cursor: pointer;
+}
+
+
+/* Header */
+.header {
+  letter-spacing: 0.1rem;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  text-transform: uppercase;
+}
+
+.contacts-container {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* contact card */
+.contact {
+  display: grid;
+  width: min(80ch, 80%);
+  background-color: var(--sec-btn);
+  /* height: 5rem; */
+  padding: 1rem;
+  border-radius: 0.5em;
+  margin-inline: auto;
+  grid-template-areas:
+    'avatar name btn'
+    'avatar phone btn'
+    'avatar email btn'
+  ;
+  grid-template-columns: 2fr 10fr 2fr;
+  grid-template-rows: 1fr 0.75fr 0.75fr;
+  align-items: center;
+}
+
+.contact .btns {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.contact .btns .btn {
+  font-size: 1rem;
+  min-width: 50px;
+  border-radius: 50%;
+  aspect-ratio: 1/1;
+  padding: 0;
+  margin: 0;
+
+}
+
+.contact .btns .btn img {
+  width: 30px;
+
+}
+
+.name {
+  grid-area: name;
+  text-transform: capitalize;
+  font-size: 1.5rem;
+
+}
+
+.phone {
+  grid-area: phone;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.email {
+  grid-area: email;
+  text-transform: lowercase;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.phone img,
+.email img {
+  width: 1.2rem;
+}
+
+.avatar {
+  grid-area: avatar;
+  height: 4.5rem;
+}
+
+.btns {
+  grid-area: btn;
+}
+
+
+/* AddContact & EditContact*/
+.backdrop {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  background-color: var(--accent);
+  opacity: 0.8;
+}
+
+.newContact {
+  position: fixed;
+  z-index: 1;
+  inset: 0;
+  margin: auto;
+  width: fit-content;
+  height: fit-content;
+  background-color: var(--sec-btn);
+  padding: 2rem 2rem;
+  border-radius: 0.5em;
+}
+
+.newContact h2 {
+  font-size: 1.8rem;
+}
+
+.newContact form {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.newContact form .field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: min(350px, 75svw);
+}
+
+.field label {
+  padding-left: 0.25rem;
+  font-size: 1.1rem;
+}
+
+.required::after {
+  content: '*';
+  color: red;
+}
+
+.field input {
+  height: 3rem;
+  padding-left: 1rem;
+  outline: transparent;
+  border: transparent;
+  border-radius: 0.5rem;
+  font-size: 1.1rem;
+}
+
+
+
+form button {
+  align-self: self-end;
+}
+
+.closebtn.btn {
+  min-width: 40px;
+  aspect-ratio: 1/1;
+  width: fit-content;
+  border-radius: 50%;
+  position: absolute;
+  top: -20px;
+  right: -20px;
+}
+
+.closebtn img {
+  width: 35px;
+}
+
+@media screen and (width<767px) {
+
+  :root {
+    font-size: 14px;
+  }
+
+  .contact {
+    width: min(100%, 350px);
+  }
+
+  .avatar {
+    height: 3rem;
+    /* margin-right: 4px; */
+    margin: 8px;
+    padding: 0;
+    align-self: self-start;
+  }
+
+  .contact .btns {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .contact .btns .btn {
+    min-width: 40px;
+  }
+
+  .contact .btns .btn img {
+    width: 20px;
+  }
 }

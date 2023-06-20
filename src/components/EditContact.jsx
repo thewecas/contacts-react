@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import closeIcon from "../img/close.svg";
 
 export default function EditContact(props) {
   const { id } = useParams();
@@ -31,46 +32,73 @@ export default function EditContact(props) {
   };
 
   return (
-    <div className="newContact">
-      <h2>New Contact</h2>
-      <form onSubmit={(e) => updateContact(e)}>
-        <div className="field">
-          <label htmlFor="name">Name</label>
-          <input
-            type="text"
-            name="name"
-            id=""
-            placeholder="Name"
-            value={contact?.name}
-            onChange={(e) => setContact({ ...contact, name: e.target.value })}
-          />
-        </div>
-        <div className="field">
-          <label htmlFor="phone">Phone no.</label>
-          <input
-            type="number"
-            name="phone"
-            id=""
-            placeholder="Phone no."
-            value={contact?.phone}
-            onChange={(e) => setContact({ ...contact, phone: e.target.value })}
-          />
-        </div>
-        <div className="field">
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            name="email"
-            id=""
-            placeholder="Email id"
-            value={contact?.email}
-            onChange={(e) => setContact({ ...contact, email: e.target.value })}
-          />
-        </div>
-        <button type="submit" className="btn">
-          Save
+    <>
+      <div className="newContact">
+        <h2>Editing contact</h2>
+        <form onSubmit={(e) => updateContact(e)}>
+          <div className="field">
+            <label htmlFor="name" className="required">
+              Name
+            </label>
+            <input
+              type="text"
+              name="name"
+              id=""
+              required
+              placeholder="Name"
+              value={contact?.name}
+              onChange={(e) => setContact({ ...contact, name: e.target.value })}
+            />
+          </div>
+          <div className="field">
+            <label htmlFor="phone" className="required">
+              Phone no.
+            </label>
+            <input
+              type="number"
+              name="phone"
+              id=""
+              required
+              placeholder="Phone no."
+              value={contact?.phone}
+              onChange={(e) =>
+                setContact({ ...contact, phone: e.target.value })
+              }
+            />
+          </div>
+          <div className="field">
+            <label htmlFor="email">Email</label>
+            <input
+              type="email"
+              name="email"
+              id=""
+              placeholder="Email id"
+              value={contact?.email}
+              onChange={(e) =>
+                setContact({ ...contact, email: e.target.value })
+              }
+            />
+          </div>
+          <button type="submit" className="btn">
+            Save
+          </button>
+        </form>
+        <button
+          className="btn closebtn"
+          onClick={() => {
+            navigate("/");
+          }}
+        >
+          <img src={closeIcon} alt="" />
         </button>
-      </form>
-    </div>
+      </div>
+
+      <div
+        className="backdrop"
+        onClick={() => {
+          navigate("/");
+        }}
+      ></div>
+    </>
   );
 }

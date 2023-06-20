@@ -9,7 +9,6 @@ export default function ContactList(props) {
 
   return (
     <div className="contact-list">
-      <h2>My Contacts</h2>
       <div className="contacts-container">
         {contacts &&
           contacts.map((contact) => {
