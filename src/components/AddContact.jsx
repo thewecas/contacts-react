@@ -46,7 +46,7 @@ export default function AddContact(props) {
         email: "",
       });
       props.setFlag();
-      navigate("/contacts-react");
+      navigate("/");
     }
   };
 
@@ -105,7 +105,7 @@ export default function AddContact(props) {
         <button
           className="btn closebtn"
           onClick={() => {
-            navigate("/contacts-react");
+            navigate("/");
           }}
         >
           <img src={closeIcon} alt="" />
@@ -114,7 +114,7 @@ export default function AddContact(props) {
       <div
         className="backdrop"
         onClick={() => {
-          navigate("/contacts-react");
+          navigate("/");
         }}
       ></div>
     </>
