@@ -28,7 +28,7 @@ function App() {
         <Header></Header>
         <Routes>
           <Route
-            path="/new"
+            path="/contacts-react/new"
             element={
               <AddContact
                 contacts={contacts}
@@ -39,7 +39,7 @@ function App() {
             }
           ></Route>
           <Route
-            path="/edit/:id"
+            path="/contacts-react/edit/:id"
             element={
               <EditContact
                 contacts={contacts}
@@ -51,7 +51,7 @@ function App() {
           ></Route>
 
           <Route
-            path="/"
+            path="/contacts-react"
             element={
               <ContactList
                 contacts={contacts}
