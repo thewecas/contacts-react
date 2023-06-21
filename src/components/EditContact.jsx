@@ -21,9 +21,10 @@ export default function EditContact(props) {
     setContact(myContact);
   }, []);
 
-  const isExist = contacts.filter((item) => {
-    return item.phone == contact.phone;
-  });
+  const isExist = () =>
+    contacts.filter((item) => {
+      return item.phone == contact.phone;
+    });
 
   const validateform = () => {
     let flag = true;
@@ -33,7 +34,7 @@ export default function EditContact(props) {
     } else if (!/^\d{10}$/.test(contact.phone)) {
       setErrMsg("Phone no. must be 10 digits");
       flag = false;
-    } else if (prevNo != contact.phone && isExist.length != 0) {
+    } else if (prevNo != contact.phone && isExist().length != 0) {
       setErrMsg("A contact with this phone no. already exist");
       flag = false;
     }

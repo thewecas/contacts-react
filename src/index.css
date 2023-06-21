@@ -69,7 +69,7 @@ button.btn:hover {
   justify-content: space-between;
   text-transform: uppercase;
   background-color: var(--bg);
-  width: var(--max-width);
+  width: min(100%, var(--max-width));
   position: fixed;
   top: 0;
 }
@@ -89,6 +89,20 @@ button.btn:hover {
 
 .header .btn p::after {
   content: ' New';
+}
+
+.contact-list {
+  position: relative;
+  min-height: 50vh;
+  min-height: 50svh;
+}
+
+.noContact {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #1111117f;
 }
 
 .contacts-container {
@@ -299,6 +313,8 @@ form button {
   .header .btn img {
     width: 1.5rem;
   }
+
+
 
   /* .contact-list {
     height: 80svh;

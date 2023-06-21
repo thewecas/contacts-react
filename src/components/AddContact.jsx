@@ -12,9 +12,10 @@ export default function AddContact(props) {
     email: "",
   });
 
-  const isExist = contacts.filter((item) => {
-    return item.phone == contact.phone;
-  });
+  const isExist = () =>
+    contacts.filter((item) => {
+      return item.phone == contact.phone;
+    });
 
   const validateform = () => {
     let flag = true;
@@ -24,7 +25,7 @@ export default function AddContact(props) {
     } else if (!/^\d{10}$/.test(contact.phone)) {
       setErrMsg("Phone no. must be 10 digits");
       flag = false;
-    } else if (isExist.length != 0) {
+    } else if (isExist().length != 0) {
       setErrMsg("A contact with this phone no. already exist");
       flag = false;
     }
