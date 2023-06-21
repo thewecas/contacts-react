@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/contacts-react/static/css/main.94f82347.css",
-    "main.js": "/contacts-react/static/js/main.9a15431a.js",
+    "main.css": "/contacts-react/static/css/main.e82e9f44.css",
+    "main.js": "/contacts-react/static/js/main.3ef340b8.js",
     "static/js/496.2d515d83.chunk.js": "/contacts-react/static/js/496.2d515d83.chunk.js",
     "static/media/mail.svg": "/contacts-react/static/media/mail.e929a338756c6e5c81501d5b746c6310.svg",
     "static/media/delete.svg": "/contacts-react/static/media/delete.9694faea6506fd4ce139cdfff3de426f.svg",
@@ -10,12 +10,12 @@
     "index.html": "/contacts-react/index.html",
     "static/media/add.svg": "/contacts-react/static/media/add.9f065ba10fe88390bdfa9b15df50789b.svg",
     "static/media/close.svg": "/contacts-react/static/media/close.e82630c1178cb236835f26ce801f3e56.svg",
-    "main.94f82347.css.map": "/contacts-react/static/css/main.94f82347.css.map",
-    "main.9a15431a.js.map": "/contacts-react/static/js/main.9a15431a.js.map",
+    "main.e82e9f44.css.map": "/contacts-react/static/css/main.e82e9f44.css.map",
+    "main.3ef340b8.js.map": "/contacts-react/static/js/main.3ef340b8.js.map",
     "496.2d515d83.chunk.js.map": "/contacts-react/static/js/496.2d515d83.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.94f82347.css",
-    "static/js/main.9a15431a.js"
+    "static/css/main.e82e9f44.css",
+    "static/js/main.3ef340b8.js"
   ]
 }
