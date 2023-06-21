@@ -1,7 +1,6 @@
 {
   "name": "contacts",
   "version": "0.1.0",
-  "homepage": "https://thewecas.github.io/contacts-react",
   "private": true,
   "dependencies": {
     "react": "^18.2.0",
