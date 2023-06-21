@@ -7,28 +7,56 @@ export default function EditContact(props) {
   const navigate = useNavigate();
   // const [contacts, setContacts] = useState([]);
   const contacts = props.contacts;
+  const [prevNo, setPrevNo] = useState();
+  const [errMsg, setErrMsg] = useState("");
   const [contact, setContact] = useState({
     name: "",
     phone: "",
     email: "",
   });
+
   useEffect(() => {
-    setContact(contacts.filter((item) => item.id == id)[0]);
+    const myContact = contacts.filter((item) => item.id == id)[0];
+    setPrevNo(myContact.phone);
+    setContact(myContact);
   }, []);
+
+  const isExist = contacts.filter((item) => {
+    return item.phone == contact.phone;
+  });
+
+  const validateform = () => {
+    let flag = true;
+    if (!(contact.name.trim() && contact.phone)) {
+      setErrMsg("Fill all the mandatary fields");
+      flag = false;
+    } else if (!/\d{10}/.test(contact.phone)) {
+      setErrMsg("Phone no. must be 10 digits");
+      flag = false;
+    } else if (prevNo != contact.phone && isExist.length != 0) {
+      setErrMsg("A contact with this phone no. already exist");
+      flag = false;
+    }
+
+    return flag;
+  };
+
   const updateContact = (e) => {
     e.preventDefault();
-    const index = contacts.findIndex((obj) => obj.id == id);
-    console.log("index", index);
-    contacts[index] = { id: id, ...contact };
-    localStorage.setItem("contacts", JSON.stringify(contacts));
+    if (validateform()) {
+      const index = contacts.findIndex((obj) => obj.id == id);
+      console.log("index", index);
+      contacts[index] = { id: id, ...contact };
+      localStorage.setItem("contacts", JSON.stringify(contacts));
 
-    setContact({
-      name: "",
-      phone: "",
-      email: "",
-    });
-    props.setFlag();
-    navigate("/");
+      setContact({
+        name: "",
+        phone: "",
+        email: "",
+      });
+      props.setFlag();
+      navigate("/");
+    }
   };
 
   return (
@@ -44,7 +72,6 @@ export default function EditContact(props) {
               type="text"
               name="name"
               id=""
-              required
               placeholder="Name"
               value={contact?.name}
               onChange={(e) => setContact({ ...contact, name: e.target.value })}
@@ -58,7 +85,6 @@ export default function EditContact(props) {
               type="number"
               name="phone"
               id=""
-              required
               placeholder="Phone no."
               value={contact?.phone}
               onChange={(e) =>
@@ -79,6 +105,7 @@ export default function EditContact(props) {
               }
             />
           </div>
+          <span className="errMessage">{errMsg}</span>
           <button type="submit" className="btn">
             Save
           </button>

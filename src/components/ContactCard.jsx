@@ -20,8 +20,8 @@ export default function ContactCard(props) {
         {phone}
       </p>
       <p className="email">
-        <img src={mailIcon} alt="" />
-        {email}
+        {email ? <img src={mailIcon} alt="" /> : ""}
+        <span className="email">{email}</span>
       </p>
       <div className="btns">
         <Link className="btn" to={"/edit/" + id}>

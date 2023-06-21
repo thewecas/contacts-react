@@ -15,10 +15,15 @@
 
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 body {
   max-width: 920px;
   background-color: var(--bg);
   margin-inline: auto;
+  padding-top: 5rem;
 }
 
 Link.btn,
@@ -54,9 +59,28 @@ button.btn:hover {
   letter-spacing: 0.1rem;
   padding: 1rem 2rem;
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
   text-transform: uppercase;
+  position: fixed;
+  top: 0;
+}
+
+.header h1 {
+  line-height: 100%;
+
+}
+
+.header .btn {
+  padding-inline: 1rem;
+}
+
+.header .btn img {
+  width: 20px;
+}
+
+.header .btn p::after {
+  content: ' New';
 }
 
 .contacts-container {
@@ -105,11 +129,13 @@ button.btn:hover {
 
 }
 
+
 .name {
   grid-area: name;
   text-transform: capitalize;
   font-size: 1.5rem;
-
+  margin-right: 8px;
+  overflow-x: scroll;
 }
 
 .phone {
@@ -118,6 +144,7 @@ button.btn:hover {
   display: flex;
   align-items: center;
   gap: 0.25rem;
+  margin-right: 8px;
 }
 
 .email {
@@ -127,6 +154,8 @@ button.btn:hover {
   display: flex;
   align-items: center;
   gap: 0.25rem;
+  margin-right: 8px;
+  overflow-x: scroll;
 }
 
 .phone img,
@@ -138,6 +167,8 @@ button.btn:hover {
   grid-area: avatar;
   height: 4.5rem;
 }
+
+
 
 .btns {
   grid-area: btn;
@@ -205,10 +236,17 @@ button.btn:hover {
   font-size: 1.1rem;
 }
 
+.errMessage {
+  display: block;
+  height: 25px;
+  color: rgb(255, 10, 20);
+  padding-inline: 0.25rem;
+}
 
 
 form button {
   align-self: self-end;
+  margin: 0 !important;
 }
 
 .closebtn.btn {
@@ -231,16 +269,38 @@ form button {
     font-size: 14px;
   }
 
+  body {
+    padding-top: 4rem;
+  }
+
+  .header .btn {
+    position: fixed;
+    bottom: 3rem;
+    right: 1.5rem;
+    min-width: 4rem;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    box-shadow: 4px 4px 20px #0000007e;
+  }
+
+  .header .btn p::after {
+    content: '';
+  }
+
+  .header .btn img {
+    width: 2rem;
+  }
+
   .contact {
     width: min(100%, 350px);
   }
 
   .avatar {
     height: 3rem;
-    /* margin-right: 4px; */
-    margin: 8px;
+    margin: 8px 12px 0px 0px;
     padding: 0;
     align-self: self-start;
+
   }
 
   .contact .btns {
