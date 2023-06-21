@@ -21,7 +21,7 @@ export default function AddContact(props) {
     if (!(contact.name.trim() && contact.phone)) {
       setErrMsg("Fill all the mandatary fields");
       flag = false;
-    } else if (!/\d{10}/.test(contact.phone)) {
+    } else if (!/^\d{10}$/.test(contact.phone)) {
       setErrMsg("Phone no. must be 10 digits");
       flag = false;
     } else if (isExist.length != 0) {
@@ -37,8 +37,7 @@ export default function AddContact(props) {
     if (validateform()) {
       let id = Math.max(...contacts.map((obj) => obj.id)) + 1;
       id = id.toString() == "-Infinity" ? 1 : id;
-      console.log("contact : ", contact);
-      contacts.push({ id: id, ...contact });
+      contacts.unshift({ id: id, ...contact });
       localStorage.setItem("contacts", JSON.stringify(contacts));
       setContact({
         name: "",

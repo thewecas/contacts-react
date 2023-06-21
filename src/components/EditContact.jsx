@@ -30,7 +30,7 @@ export default function EditContact(props) {
     if (!(contact.name.trim() && contact.phone)) {
       setErrMsg("Fill all the mandatary fields");
       flag = false;
-    } else if (!/\d{10}/.test(contact.phone)) {
+    } else if (!/^\d{10}$/.test(contact.phone)) {
       setErrMsg("Phone no. must be 10 digits");
       flag = false;
     } else if (prevNo != contact.phone && isExist.length != 0) {
@@ -45,7 +45,6 @@ export default function EditContact(props) {
     e.preventDefault();
     if (validateform()) {
       const index = contacts.findIndex((obj) => obj.id == id);
-      console.log("index", index);
       contacts[index] = { id: id, ...contact };
       localStorage.setItem("contacts", JSON.stringify(contacts));
 

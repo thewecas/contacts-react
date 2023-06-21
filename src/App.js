@@ -10,7 +10,6 @@ function App() {
   const [flag, setFlag] = useState(false);
 
   useEffect(() => {
-    console.log("rendering");
     setContacts(JSON.parse(localStorage.getItem("contacts") || "[]"));
   }, [flag]);
 
@@ -50,12 +49,17 @@ function App() {
               ></EditContact>
             }
           ></Route>
-        </Routes>
 
-        <ContactList
-          contacts={contacts}
-          setDeleteContactId={deleteContact}
-        ></ContactList>
+          <Route
+            path="/"
+            element={
+              <ContactList
+                contacts={contacts}
+                setDeleteContactId={deleteContact}
+              ></ContactList>
+            }
+          ></Route>
+        </Routes>
       </div>
     </Router>
   );
