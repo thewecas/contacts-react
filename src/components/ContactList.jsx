@@ -2,8 +2,6 @@ import ContactCard from "./ContactCard";
 
 export default function ContactList(props) {
   const contacts = props.contacts;
-  console.log("->", contacts);
-  console.log("<->", typeof contacts);
   const getDeleteId = (id) => {
     props.setDeleteContactId(id);
   };
