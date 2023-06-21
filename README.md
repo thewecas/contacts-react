@@ -1,3 +1,12 @@
+# Contacts App
+
+- A React app for maintaing contacts. create, edit or delete the existing contacts.
+- This app uses `localstorage` of browser for maintaing the data.
+- The contact has the fields Name*, Phone no* & Email.
+- Form validated before adding or updating a contact.
+
+---
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
