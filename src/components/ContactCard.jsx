@@ -24,7 +24,7 @@ export default function ContactCard(props) {
         <span className="email">{email}</span>
       </p>
       <div className="btns">
-        <Link className="btn" to={"/edit/" + id}>
+        <Link className="btn" to={"/contacts-react/edit/" + id}>
           <img src={editIcon} alt="" />
         </Link>
         <button className="btn" onClick={sendDeleteId}>
