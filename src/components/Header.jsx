@@ -4,7 +4,7 @@ export default function Header() {
   return (
     <div className="header">
       <h1>Contacts</h1>
-      <Link className="btn" to="/new">
+      <Link className="btn" to="/contacts-react/new">
         &nbsp;
         <img src={newIcon} alt="" />
         <p>&nbsp;</p>
