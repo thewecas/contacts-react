@@ -54,7 +54,7 @@ export default function AddContact(props) {
     <>
       <div className="newContact">
         <h2>New Contact</h2>
-        <form onSubmit={(e) => saveContact(e)}>
+        <form onSubmit={(e) => saveContact(e)} netlify>
           <div className="field">
             <label htmlFor="name" className="required">
               Name
